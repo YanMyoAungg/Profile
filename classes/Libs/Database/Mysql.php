@@ -16,7 +16,7 @@ class Mysql
     public function __construct(
         $dbhost = "localhost",
         $dbuser = "root",
-        $dbpass = "",
+        $dbpass = "zenith172421",
         $dbname = "project",
     ) {
         $this->dbhost = $dbhost;

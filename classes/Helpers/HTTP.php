@@ -4,7 +4,7 @@ namespace Helpers;
 
 class HTTP
 {
-    static $app_url = "http://localhost/project";
+    static $app_url = "http://localhost:8000";
 
     static function redirect($path, $q = "")
     {

@@ -2,11 +2,11 @@
 include("vendor/autoload.php");
 
 use Libs\Database\Mysql;
-use Libs\Database\Userstable;
+use Libs\Database\UsersTable;
 use Helpers\Auth;
 
 $auth = Auth::check();
-$table = new Userstable(new Mysql);
+$table = new UsersTable(new Mysql);
 $users = $table->getAll();
 ?>
 <!DOCTYPE html>

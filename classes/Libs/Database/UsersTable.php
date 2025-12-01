@@ -2,7 +2,7 @@
 
 namespace Libs\Database;
 
-class Userstable
+class UsersTable
 {
     private $db;
     public function __construct(Mysql $mysql)

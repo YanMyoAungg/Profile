@@ -1,42 +1,33 @@
 <?php
 include("../vendor/autoload.php");
 
-use Libs\Database\MySQL;
+use Libs\Database\Mysql;
 use Libs\Database\UsersTable;
 use Helpers\HTTP;
 
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$phone = $_POST['phone'] ?? '';
+$address = $_POST['address'] ?? '';
+$password = $_POST['password'] ?? '';
+
+if (!$name || !$email || !$password) {
+    HTTP::redirect('/register.php', 'error=missing');
+}
+
 $data = [
-    "name" => $_POST['name'],
-    "email" => $_POST['email'],
-    "phone" => $_POST['phone'],
-    "address" => $_POST['address'],
-    "password" => ($_POST['password']),
+    'name' => $name,
+    'email' => $email,
+    'phone' => $phone,
+    'address' => $address,
+    'password' => $password,
 ];
 
-$table = new UsersTable(new MySQL);
-if ($table) {
+$table = new UsersTable(new Mysql());
+try {
     $table->insert($data);
-    HTTP::redirect("/index.php", "register=success");
-} else {
-    HTTP::redirect("/register.php", "error=true");
+    HTTP::redirect('/index.php', 'register=success');
+} catch (Exception $e) {
+    // Could be duplicate email or DB error
+    HTTP::redirect('/register.php', 'error=true');
 }
-?>
-
-
-<?php
-// include("../vendor/autoload.php");
-
-// use Libs\Database\Mysql;
-// use Libs\Database\Userstable;
-// use Helpers\HTTP;
-
-// $table = new Userstable(new Mysql);
-// $table->insert([
-//     "name" => $_POST['name'],
-//     "email" => $_POST['email'],
-//     "phone" => $_POST['phone'],
-//     "address" => $_POST['address'],
-//     "password" => $_POST['password'],
-// ]);
-
-// HTTP::redirect("/index.php", "register=success");

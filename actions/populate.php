@@ -4,12 +4,12 @@ include("../vendor/autoload.php");
 
 use Libs\Database\Mysql;
 
-use Libs\Database\Userstable;
+use Libs\Database\UsersTable;
 
 use Faker\Factory as Faker;
 
 $faker = Faker::create();
-$table = new Userstable(new Mysql);
+$table = new UsersTable(new Mysql);
 echo "Starting data population...<br>";
 for ($i = 0; $i < 20; $i++) {
     $table->insert([
@@ -23,7 +23,7 @@ for ($i = 0; $i < 20; $i++) {
 
 echo "Done Data population.";
 
-// $table = new Userstable(new Mysql);
+// $table = new UsersTable(new Mysql);
 // $id = $table->insert([
 //     "name" => "Alice",
 //     "email" => "alice@gmail.com",
