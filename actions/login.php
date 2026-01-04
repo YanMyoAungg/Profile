@@ -17,7 +17,7 @@ if (!isset($_SESSION['login_attempts'])) {
 // check lockout
 if (isset($_SESSION['lockout_until']) && time() < $_SESSION['lockout_until']) {
     // still locked; redirect back to login (UI will show remaining time)
-    HTTP::redirect('/index.php?auth=locked');
+    HTTP::redirect('/login.php?auth=locked');
 }
 
 $table = new UsersTable(new Mysql());
@@ -28,7 +28,7 @@ if ($user) {
     unset($_SESSION['lockout_until']);
 
     if ($user->suspended) {
-        HTTP::redirect("/index.php", "suspended=true");
+        HTTP::redirect("/login.php", "suspended=true");
     }
     $_SESSION['user'] = $user;
     HTTP::redirect("/profile.php");
@@ -41,10 +41,10 @@ if ($user) {
         $_SESSION['lockout_until'] = time() + (5 * 60); // 5 minutes
         // reset attempts counter after lockout
         $_SESSION['login_attempts'] = 0;
-        HTTP::redirect('/index.php?auth=locked');
+        HTTP::redirect('/login.php?auth=locked');
     }
 
-    HTTP::redirect('/index.php?auth=fail');
+    HTTP::redirect('/login.php?auth=fail');
 }
 // session_start();
 // include("../vendor/autoload.php");

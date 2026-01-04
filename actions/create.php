@@ -6,6 +6,9 @@ use Libs\Database\UsersTable;
 use Helpers\HTTP;
 
 $name = $_POST['name'] ?? '';
+if (isset($_POST['first_name']) && isset($_POST['last_name'])) {
+    $name = trim($_POST['first_name'] . ' ' . $_POST['last_name']);
+}
 $email = $_POST['email'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $address = $_POST['address'] ?? '';
@@ -26,7 +29,7 @@ $data = [
 $table = new UsersTable(new Mysql());
 try {
     $table->insert($data);
-    HTTP::redirect('/index.php', 'register=success');
+    HTTP::redirect('/login.php', 'register=success');
 } catch (Exception $e) {
     // Could be duplicate email or DB error
     HTTP::redirect('/register.php', 'error=true');

@@ -46,7 +46,7 @@ class UsersTable
     {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $statement = $this->db->prepare(
-            "INSERT INTO users(name,email,phone,address,password,created_at) VALUES (:name,:email,:phone,:address,:password,NOW())"
+            "INSERT INTO users(name,email,phone,address,password,role_id,created_at) VALUES (:name,:email,:phone,:address,:password,1,NOW())"
         );
         $statement->execute($data);
         return $this->db->lastInsertId();

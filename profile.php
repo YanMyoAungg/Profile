@@ -4,48 +4,44 @@ include("vendor/autoload.php");
 
 use Helpers\Auth;
 
-// $auth = Helpers\Auth::check();
 $auth = Auth::check();
 
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+<?php include('header.php');
+include('navbar.php');
+?>
 
-</head>
+<div class="container my-5 " style="max-width: 800px;">
+    <h1 class="h3 mt-4 mb3">Profile</h1>
 
-<body>
-    <div class="container" style="max-width: 800px;">
-        <h1 class="h3 mt-4 mb3">Profile</h1>
+    <?php if ($auth->photo) : ?>
+        <img class="img-thumbnail mb-3 " src="actions/photos/<?= $auth->photo ?>" alt="Profile Picture" style="width: 200px; height: 200px; object-fit: cover;">
+    <?php endif ?>
 
-        <?php if ($auth->photo) : ?>
-            <img class="img-thumbnail mb-3" src="actions/photos/<?= $auth->photo ?>" alt="Profile Picture" width="200">
-        <?php endif ?>
+    <form action="actions/upload.php" method="post" enctype="multipart/form-data" class="input-group my-4">
 
-        <form action="actions/upload.php" method="post" enctype="multipart/form-data" class="input-group my-4">
+        <input type="file" name="photo" class="form-control">
+        <button class="btn btn-secondary">Upload</button>
 
-            <input type="file" name="photo" class="form-control">
-            <button class="btn btn-secondary">Upload</button>
+    </form>
 
-        </form>
+    <ul class="list-group mb-4">
+        <li class="list-group-item">Name: <?= $auth->name ?></li>
+        <li class="list-group-item">Email: <?= $auth->email ?></li>
+        <li class="list-group-item">phone: <?= $auth->phone ?></li>
+        <li class="list-group-item">address: <?= $auth->address ?></li>
+    </ul>
+   
+    
+    <form action="actions/logout.php" method="POST" class="d-inline">
+        <button name="logout" class="btn btn-dark">Logout</button>
+    </form>
+    <?php if (isset($auth->role_id) && $auth->role_id >= 2): ?>
+        <a href="admin.php" class="btn btn-primary ms-4">
+            <i class="bi bi-shield-lock"></i> Admin Panel
+        </a>
+    <?php endif; ?>
+</div>
 
-        <ul class="list-group mb-4">
-            <li class="list-group-item">Name: <?= $auth->name ?></li>
-            <li class="list-group-item">Email: <?= $auth->email ?></li>
-            <li class="list-group-item">phone: <?= $auth->phone ?></li>
-            <li class="list-group-item">address: <?= $auth->address ?></li>
-        </ul>
-        <form action="actions/logout.php" method="POST">
-            <button name="logout" class="btn btn-danger">Logout</button>
-        </form>
-    </div>
-</body>
-
-</html>
+<?php include('footer.php'); ?>

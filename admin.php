@@ -23,6 +23,13 @@ $users = $table->getAll();
 <body>
     <nav class="navbar navbar-dark bg-dark mb-4">
         <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100 mb-3 pt-3">
+                <h4 class="text-white mb-0">Manage Users</h4>
+                <div>
+                    <a href="admin_add_recipe.php" class="btn btn-outline-light btn-sm me-2">Add Recipe</a>
+                    <a href="admin_add_resource.php" class="btn btn-outline-light btn-sm">Add Resource</a>
+                </div>
+            </div>
             <table class="table table-dark table-striped">
                 <tr>
                     <th>ID</th>
