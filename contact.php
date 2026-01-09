@@ -29,18 +29,21 @@ include('navbar.php');
                     <form action="actions/contact_submit.php" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message to send..." required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="5"
+                                placeholder="Message to send..." required></textarea>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                            <button type="submit" class="btn btn-dark btn-lg">Send Message</button>
                         </div>
                     </form>
                 </div>
