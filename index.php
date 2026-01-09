@@ -22,9 +22,9 @@ session_start();
                     Our mission is to empower home cooks and professional chefs alike by providing high-quality recipes,
                     educational resources, and a platform to share their own culinary creations.
                 </p>
-                <button type="button" class="btn btn-primary btn-lg px-5 shadow-sm" data-bs-toggle="modal"
+                <button type="button" class="btn btn-dark btn-lg px-5 shadow-sm" data-bs-toggle="modal"
                     data-bs-target="#joinUsModal">
-                    Join Us Today
+                    Join Today
                 </button>
             </div>
         </div>
@@ -35,7 +35,7 @@ session_start();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-black text-white">
-                    <h5 class="modal-title" id="joinUsModalLabel">Join FoodFusion</h5>
+                    <h5 class="modal-title" id="joinUsModalLabel">Sign Up Now</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
