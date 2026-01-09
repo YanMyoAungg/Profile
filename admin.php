@@ -34,6 +34,7 @@ $users = $table->getAll();
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Username</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Role</th>
@@ -43,6 +44,7 @@ $users = $table->getAll();
                     <tr>
                         <td><?= $user->id ?></td>
                         <td><?= $user->name ?></td>
+                        <td><?= $user->username ?></td>
                         <td><?= $user->email ?></td>
                         <td><?= $user->phone ?></td>
                         <td>

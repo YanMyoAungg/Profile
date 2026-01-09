@@ -69,7 +69,9 @@ function createSchema($pdo, $dbname)
     if (!tableExists($pdo, $dbname, 'users')) {
         $sql = "CREATE TABLE users (
           id INT AUTO_INCREMENT PRIMARY KEY,
-          name VARCHAR(255),
+          first_name VARCHAR(100),
+          last_name VARCHAR(100),
+          username VARCHAR(100) UNIQUE,
           email VARCHAR(255) UNIQUE,
           phone VARCHAR(100),
           address TEXT,
@@ -84,7 +86,6 @@ function createSchema($pdo, $dbname)
         $pdo->exec($sql);
         $created[] = 'users';
     }
-
     // recipes table
     if (!tableExists($pdo, $dbname, 'recipes')) {
         $sql = "CREATE TABLE recipes (
@@ -286,11 +287,15 @@ if ($action === 'create') {
 
     $pdoDb = connectPDO($host, $user, $pass, true, $dbname);
     $created = createSchema($pdoDb, $dbname);
-    if ($created) echo "Created tables: " . implode(', ', $created) . "\n";
-    
-    if (seedRoles($pdoDb, $dbname)) echo "Seeded roles.\n";
-    if (seedRecipes($pdoDb, $dbname)) echo "Seeded recipes.\n";
-    if (seedResources($pdoDb, $dbname)) echo "Seeded resources.\n";
+    if ($created)
+        echo "Created tables: " . implode(', ', $created) . "\n";
+
+    if (seedRoles($pdoDb, $dbname))
+        echo "Seeded roles.\n";
+    if (seedRecipes($pdoDb, $dbname))
+        echo "Seeded recipes.\n";
+    if (seedResources($pdoDb, $dbname))
+        echo "Seeded resources.\n";
 
     exit(0);
 } elseif ($action === 'reset') {

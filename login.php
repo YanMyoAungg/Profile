@@ -22,7 +22,7 @@ if (isset($_SESSION['lockout_until'])) {
         <div class="col-md-6 col-lg-5">
             <div class="card shadow-sm border-0 rounded-3">
                 <div class="card-body p-4 p-sm-5">
-                    <h2 class="card-title text-center mb-4 text-primary fw-bold">Welcome Back</h2>
+                    <h2 class="card-title text-center mb-4 text-black fw-bold">Welcome Back</h2>
 
                     <?php if (isset($_GET['suspended'])): ?>
                         <div class="alert alert-danger" role="alert">
@@ -38,7 +38,7 @@ if (isset($_SESSION['lockout_until'])) {
 
                     <?php if (isset($_GET['auth']) && $_GET['auth'] === 'fail'): ?>
                         <div class="alert alert-warning" role="alert">
-                            Incorrect email or password
+                            Incorrect email/username or password
                         </div>
                     <?php endif ?>
 
@@ -50,9 +50,9 @@ if (isset($_SESSION['lockout_until'])) {
 
                     <form action="actions/login.php" method="POST">
                         <div class="form-floating mb-3">
-                            <input type="text" name="email" class="form-control" id="emailInput"
-                                placeholder="name@example.com" required>
-                            <label for="emailInput">Email or Username</label>
+                            <input type="text" name="credential" class="form-control" id="credentialInput"
+                                placeholder="Email or Username" required>
+                            <label for="credentialInput">Email or Username</label>
                         </div>
                         <div class="form-floating mb-4">
                             <input type="password" name="password" class="form-control" id="passwordInput"
@@ -61,13 +61,12 @@ if (isset($_SESSION['lockout_until'])) {
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button id="loginBtn" name="button" class="btn btn-primary btn-lg"
-                                type="submit">Login</button>
+                            <button id="loginBtn" name="button" class="btn btn-dark btn-lg" type="submit">Login</button>
                         </div>
 
                         <div class="text-center mt-3">
                             <p class="text-muted">Don't have an account? <a href="register.php"
-                                    class="text-decoration-none">Register here</a></p>
+                                    class="text-decoration-none text-dark">Register here</a></p>
                         </div>
                     </form>
                 </div>

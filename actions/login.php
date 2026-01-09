@@ -6,22 +6,11 @@ use Libs\Database\Mysql;
 use Libs\Database\UsersTable;
 use Helpers\HTTP;
 
-$email = $_POST['email'] ?? '';
+$credential = $_POST['credential'] ?? '';
 $password = $_POST['password'] ?? '';
 
-// initialize attempt tracking in session
-if (!isset($_SESSION['login_attempts'])) {
-    $_SESSION['login_attempts'] = 0;
-}
-
-// check lockout
-if (isset($_SESSION['lockout_until']) && time() < $_SESSION['lockout_until']) {
-    // still locked; redirect back to login (UI will show remaining time)
-    HTTP::redirect('/login.php?auth=locked');
-}
-
 $table = new UsersTable(new Mysql());
-$user = $table->findByEmailAndPassword($email, $password);
+$user = $table->findByEmailOrUsernameAndPassword($credential, $password);
 if ($user) {
     // successful login: clear attempts and lockout
     unset($_SESSION['login_attempts']);
@@ -38,7 +27,7 @@ if ($user) {
 
     // if reached 5 consecutive failures, set 5 minute lockout
     if ($_SESSION['login_attempts'] >= 5) {
-        $_SESSION['lockout_until'] = time() + (5 * 60); // 5 minutes
+        $_SESSION['lockout_until'] = time() + (1 * 60); // 5 minutes
         // reset attempts counter after lockout
         $_SESSION['login_attempts'] = 0;
         HTTP::redirect('/login.php?auth=locked');
@@ -46,20 +35,3 @@ if ($user) {
 
     HTTP::redirect('/login.php?auth=fail');
 }
-// session_start();
-// include("../vendor/autoload.php");
-
-// use Libs\Database\MySQL;
-// use Libs\Database\UsersTable;
-// use Helpers\HTTP;
-
-// $email = $_POST['email'];
-// $password = md5($_POST['password']);
-// $table = new UsersTable(new MySQL());
-// $user = $table->findByEmailAndPassword($email, $password);
-// if ($user) {
-//     $_SESSION['user'] = $user;
-//     HTTP::redirect("/profile.php");
-// } else {
-//     HTTP::redirect("/index.php", "incorrect=1");
-// }

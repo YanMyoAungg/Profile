@@ -13,17 +13,16 @@ class UsersTable
     public function getAll()
     {
         $statement = $this->db->query(
-            "SELECT users.*,roles.name AS role FROM users LEFT JOIN roles ON users.role_id = roles.id"
+            "SELECT users.*, CONCAT(users.first_name, ' ', users.last_name) AS name, roles.name AS role FROM users LEFT JOIN roles ON users.role_id = roles.id"
         );
         return $statement->fetchAll();
     }
 
-    public function findByEmailAndPassword($email, $password)
+    public function findByEmailOrUsernameAndPassword($credential, $password)
     {
-        $statement = $this->db->prepare("SELECT * FROM users WHERE email=:email");
-        $statement->execute(["email" => $email]);
+        $statement = $this->db->prepare("SELECT * FROM users WHERE email=:credential OR username=:credential");
+        $statement->execute(["credential" => $credential]);
         $user = $statement->fetch();
-        // return $user ?? false;
         if ($user) {
             if (password_verify($password, $user->password)) {
                 return $user;
@@ -31,34 +30,16 @@ class UsersTable
         }
         return false;
     }
-    // public function findByEmailAndPasword($email, $password)
-    // {
-    //     $statement = $this->db->prepare("SELECT * FROM users WHERE email=:email AND password=:password");
-    //     $statement->execute([
-    //         'email' => $email,
-    //         'password' => $password
-    //     ]);
-    //     $row = $statement->fetch();
-    //     return $row ?? false;
-    // }
 
     public function insert($data)
     {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $statement = $this->db->prepare(
-            "INSERT INTO users(name,email,phone,address,password,role_id,created_at) VALUES (:name,:email,:phone,:address,:password,1,NOW())"
+            "INSERT INTO users(first_name,last_name,username,email,phone,address,password,role_id,created_at) VALUES (:first_name,:last_name,:username,:email,:phone,:address,:password,1,NOW())"
         );
         $statement->execute($data);
         return $this->db->lastInsertId();
     }
-    // public function insert($data)
-    // {
-    //     $qry = "INSERT INTO users (name, email, phone, address,password,created_at) 
-    //         VALUES (:name, :email, :phone, :address,:password, NOW())";
-    //     $statement = $this->db->prepare($qry);
-    //     $statement->execute($data);
-    //     return $this->db->lastInsertId();
-    // }
 
     public function updatePhoto($photo, $id)
     {

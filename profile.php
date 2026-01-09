@@ -27,7 +27,8 @@ include('navbar.php');
     </form>
 
     <ul class="list-group mb-4">
-        <li class="list-group-item">Name: <?= $auth->name ?></li>
+        <li class="list-group-item">Name: <?= $auth->first_name ?> <?= $auth->last_name ?></li>
+        <li class="list-group-item">Username: <?= $auth->username ?></li>
         <li class="list-group-item">Email: <?= $auth->email ?></li>
         <li class="list-group-item">phone: <?= $auth->phone ?></li>
         <li class="list-group-item">address: <?= $auth->address ?></li>

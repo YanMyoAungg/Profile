@@ -11,7 +11,7 @@
     }
   },
   "scripts": {
-    "serve": "php -S localhost:0000",
+    "serve": "php -S localhost:8000",
     "db:create": "php scripts/manage_db.php create",
     "db:reset": "php scripts/manage_db.php reset",
     "db:status": "php scripts/manage_db.php status"

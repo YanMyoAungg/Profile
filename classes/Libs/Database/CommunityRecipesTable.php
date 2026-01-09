@@ -16,7 +16,7 @@ class CommunityRecipesTable
     public function getAll()
     {
         $statement = $this->db->query("
-            SELECT community_recipes.*, users.name as author_name 
+            SELECT community_recipes.*, users.username as author_name 
             FROM community_recipes 
             JOIN users ON community_recipes.user_id = users.id 
             ORDER BY created_at DESC
