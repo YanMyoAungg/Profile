@@ -16,6 +16,7 @@
             min-height: 100%;
             display: flex;
             flex-direction: column;
+            margin-top: 50px;
         }
 
         footer {
@@ -40,6 +41,34 @@
         .card-img-top {
             height: 200px;
             object-fit: cover;
+        }
+
+        .profile-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            overflow: hidden;
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: #6c757d;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
     </style>
 </head>
