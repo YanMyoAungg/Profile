@@ -42,17 +42,18 @@ include('navbar.php');
         <?php if (count($recipes) > 0): ?>
             <?php foreach ($recipes as $recipe): ?>
                 <div class="col-md-6 mb-4">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-sm border-0" style="background:#CAC0BF">
                         <div class="card-body">
-                            <h5 class="card-title text-primary"><?= htmlspecialchars($recipe->title) ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted">By <?= htmlspecialchars($recipe->author_name) ?> <small>on <?= date('M d, Y', strtotime($recipe->created_at)) ?></small></h6>
+                            <h5 class="card-title text-black fw-bold"><?= htmlspecialchars($recipe->title) ?></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">By <?= htmlspecialchars($recipe->author_name) ?> <small>on
+                                    <?= date('M d, Y', strtotime($recipe->created_at)) ?></small></h6>
                             <p class="card-text"><?= htmlspecialchars($recipe->description) ?></p>
-                            
+
                             <hr>
-                            
+
                             <h6>Ingredients:</h6>
                             <p class="small text-muted"><?= nl2br(htmlspecialchars($recipe->ingredients)) ?></p>
-                            
+
                             <h6>Instructions:</h6>
                             <p class="small text-muted"><?= nl2br(htmlspecialchars($recipe->instructions)) ?></p>
                         </div>
@@ -73,7 +74,8 @@ include('navbar.php');
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="addRecipeModalLabel">Share Your Recipe</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <form action="actions/add_community_recipe.php" method="POST">
                 <div class="modal-body">
@@ -91,7 +93,8 @@ include('navbar.php');
                     </div>
                     <div class="mb-3">
                         <label for="instructions" class="form-label">Instructions *</label>
-                        <textarea class="form-control" id="instructions" name="instructions" rows="4" required></textarea>
+                        <textarea class="form-control" id="instructions" name="instructions" rows="4"
+                            required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

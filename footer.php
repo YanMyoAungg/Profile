@@ -38,7 +38,6 @@
 
 <script src="js/bootstrap.bundle.min.js"></script>
 <script>
-    // Simple Cookie Consent
     document.addEventListener("DOMContentLoaded", function () {
         if (!localStorage.getItem("cookieConsent")) {
             let consent = document.createElement("div");
