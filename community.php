@@ -72,34 +72,37 @@ include('navbar.php');
 <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+            <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="addRecipeModalLabel">Share Your Recipe</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <form action="actions/add_community_recipe.php" method="POST">
-                <div class="modal-body">
+            <form action="actions/add_community_recipe.php" method="POST" style="background-color: #dadadaff;">
+                <div class="modal-body" style="background-color: #dadadaff;">
                     <div class="mb-3">
                         <label for="title" class="form-label">Recipe Title *</label>
-                        <input type="text" class="form-control" id="title" name="title" required>
+                        <input type="text" style="background-color: #faf3f3ff;" class="form-control" id="title"
+                            name="title" required>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description (Short summary)</label>
-                        <textarea class="form-control" id="description" name="description" rows="2"></textarea>
+                        <textarea style="background-color: #faf3f3ff;" class="form-control" id="description"
+                            name="description" rows="2"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="ingredients" class="form-label">Ingredients * (List each on a new line)</label>
-                        <textarea class="form-control" id="ingredients" name="ingredients" rows="4" required></textarea>
+                        <textarea class="form-control" style="background-color: #faf3f3ff;" id="ingredients"
+                            name="ingredients" rows="4" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="instructions" class="form-label">Instructions *</label>
-                        <textarea class="form-control" id="instructions" name="instructions" rows="4"
-                            required></textarea>
+                        <textarea class="form-control" style="background-color: #faf3f3ff;" id="instructions"
+                            name="instructions" rows="4" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit Recipe</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-dark">Submit Recipe</button>
                 </div>
             </form>
         </div>
