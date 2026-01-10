@@ -27,7 +27,7 @@ include('navbar.php');
                                         class="rounded-circle shadow"
                                         style="width: 140px; height: 140px; object-fit: cover; border: 4px solid #fff;">
                                 <?php else: ?>
-                                    <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center shadow"
+                                    <div class="rounded-circle bg-white text-secondary d-flex align-items-center justify-content-center shadow"
                                         style="width: 140px; height: 140px; font-size: 3rem; border: 4px solid #e1e1e1;">
                                         <?= strtoupper(substr($auth->username, 0, 1)) ?>
                                     </div>
@@ -41,7 +41,7 @@ include('navbar.php');
                             <h2 class="fw-bold mb-1"><?= htmlspecialchars($auth->username) ?></h2>
                             <p class="text-muted mb-3"><?= htmlspecialchars($auth->email) ?></p>
                             <?php if (isset($auth->role_id) && $auth->role_id >= 2): ?>
-                                <a href="admin.php" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                <a href="admin.php" class="btn btn-outline-dark btn-sm rounded-pill px-3">
                                     <i class="bi bi-person-bounding-box"></i> Admin Panel
                                 </a>
                             <?php endif; ?>
