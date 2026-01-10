@@ -27,7 +27,7 @@ include('navbar.php');
                                 <h5 class="card-title mb-0"><?= htmlspecialchars($res->title) ?></h5>
                             </div>
                             <p class="card-text text-muted"><?= htmlspecialchars($res->description) ?></p>
-                            <a href="<?= htmlspecialchars($res->file_path) ?>" class="btn btn-outline-secondary " download>
+                            <a href="<?= htmlspecialchars($res->file_path) ?>" class="btn btn-outline-danger " download>
                                 <i class="bi bi-download"></i> Download Resource
                             </a>
                         </div>

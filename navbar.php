@@ -46,10 +46,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <?php $user = $_SESSION['user']; ?>
                     <?php $userInitial = strtoupper(substr($user->username, 0, 1)); ?>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center <?= ($current_page == 'profile.php') ? 'active' : '' ?>" href="profile.php">
+                        <a class="nav-link d-flex align-items-center <?= ($current_page == 'profile.php') ? 'active' : '' ?>"
+                            href="profile.php">
                             <span class="profile-icon me-2 <?= $user->photo ? 'has-photo' : '' ?>">
                                 <?php if ($user->photo): ?>
-                                    <img src="actions/photos/<?= $user->photo ?>" alt="Profile" class="rounded-circle" style="width: 28px; height: 28px; object-fit: cover;">
+                                    <img src="actions/photos/<?= $user->photo ?>" alt="Profile" class="rounded-circle"
+                                        style="width: 28px; height: 28px; object-fit: cover;">
                                 <?php else: ?>
                                     <span class="avatar-placeholder rounded-circle"><?= $userInitial ?></span>
                                 <?php endif; ?>

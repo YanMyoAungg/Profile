@@ -52,21 +52,21 @@ include('navbar.php');
             <div class="row mt-5 text-center">
                 <div class="col-md-4">
                     <div class="p-3">
-                        <i class="bi bi-geo-alt fs-2 text-primary"></i>
+                        <i class="bi bi-geo-alt fs-2 text-black"></i>
                         <h5>Our Office</h5>
                         <p class="text-muted">123 Culinary Ave, Food City</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3">
-                        <i class="bi bi-envelope fs-2 text-primary"></i>
+                        <i class="bi bi-envelope fs-2 text-black"></i>
                         <h5>Email Us</h5>
                         <p class="text-muted">support@foodfusion.com</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3">
-                        <i class="bi bi-telephone fs-2 text-primary"></i>
+                        <i class="bi bi-telephone fs-2 text-black"></i>
                         <h5>Call Us</h5>
                         <p class="text-muted">+1 234 567 890</p>
                     </div>
