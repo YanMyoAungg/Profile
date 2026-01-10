@@ -16,7 +16,7 @@ include('navbar.php');
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h1>Community Cookbook</h1>
         <?php if (isset($_SESSION['user'])): ?>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRecipeModal">
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addRecipeModal">
                 <i class="bi bi-plus-circle"></i> Share Your Recipe
             </button>
         <?php else: ?>

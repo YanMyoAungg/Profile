@@ -75,4 +75,19 @@ class UsersTable
         $statement->execute(['id' => $id, 'role_id' => $role_id]);
         return $statement->rowCount();
     }
+
+    public function updateProfile($id, $data)
+    {
+        $statement = $this->db->prepare("UPDATE users SET first_name=:first_name, last_name=:last_name, email=:email, username=:username, phone=:phone, address=:address WHERE id=:id");
+        $statement->execute([
+            'id' => $id,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'phone' => $data['phone'],
+            'address' => $data['address']
+        ]);
+        return $statement->rowCount();
+    }
 }

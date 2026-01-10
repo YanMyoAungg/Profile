@@ -13,8 +13,12 @@ $phone = $_POST['phone'] ?? '';
 $address = $_POST['address'] ?? '';
 $password = $_POST['password'] ?? '';
 
-if (!$first_name || !$last_name || !$username || !$email || !$password) {
+if (!$first_name || !$last_name || !$email || !$password) {
     HTTP::redirect('/register.php', 'error=missing');
+}
+
+if (!$username) {
+    $username = strtolower($first_name . $last_name);
 }
 
 $data = [
