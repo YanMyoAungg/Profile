@@ -5,10 +5,11 @@ session_start();
 <?php include('navbar.php'); ?>
 
 <!-- Hero Section -->
-<?php if (!isset($_SESSION['user'])): ?>
-    <div id="heroSection"
-        class="mb-4 bg-light hero-section text-center position-relative d-flex align-items-center justify-content-center"
-        style="min-height: 500px;">
+<div id="heroSection"
+    class="mb-4 bg-light hero-section text-center position-relative d-flex align-items-center justify-content-center"
+    style="min-height: 500px;">
+    <?php if (!isset($_SESSION['user'])): ?>
+
         <div id="welcome_modal" class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center"
             style="background-color: rgba(0,0,0,0.3); z-index: 10;">
             <button type="button" class="btn-close position-absolute top-0 end-0 m-3 bg-white rounded-circle p-2"
@@ -82,8 +83,8 @@ session_start();
                 </div>
             </div>
         </div>
-    </div>
-<?php endif; ?>
+    <?php endif; ?>
+</div>
 <div class="container mt-4">
     <!-- Event Carousel -->
     <h2 class="text-center mb-4">Upcoming Events</h2>
@@ -102,16 +103,16 @@ session_start();
                     style="height: 400px; object-fit: contain; background-color: #333;">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        <but ton class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        </but>
+        <but ton class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
-        </button>
+        </but>
     </div>
 
     <!-- Recent Recipes Feed (Placeholder) -->
@@ -123,7 +124,7 @@ session_start();
                 <div class="card-body">
                     <h5 class="card-title">Classic Spaghetti</h5>
                     <p class="card-text">A delicious and easy to make classic Italian dish.</p>
-                    <a href="recipes.php" class="btn btn-outline-primary">View Recipe</a>
+                    <a href="recipes.php" class="btn btn-outline-info">View Recipe</a>
                 </div>
             </div>
         </div>
@@ -133,7 +134,7 @@ session_start();
                 <div class="card-body">
                     <h5 class="card-title">Fresh Garden Salad</h5>
                     <p class="card-text">Healthy and refreshing salad with seasonal vegetables.</p>
-                    <a href="recipes.php" class="btn btn-outline-primary">View Recipe</a>
+                    <a href="recipes.php" class="btn btn-outline-info">View Recipe</a>
                 </div>
             </div>
         </div>
@@ -143,7 +144,7 @@ session_start();
                 <div class="card-body">
                     <h5 class="card-title">Chocolate Cake</h5>
                     <p class="card-text">Rich and moist chocolate cake for dessert lovers.</p>
-                    <a href="recipes.php" class="btn btn-outline-primary">View Recipe</a>
+                    <a href="recipes.php" class="btn btn-outline-info">View Recipe</a>
                 </div>
             </div>
         </div>
