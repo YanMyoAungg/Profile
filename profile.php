@@ -82,19 +82,13 @@ include('navbar.php');
                                             value="<?= htmlspecialchars($auth->last_name) ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <label class="form-label fw-bold text-secondary small text-uppercase">Email</label>
                                     <div class="input-group">
                                         <input type="email" name="email" class="form-control  ps-3"
                                             value="<?= htmlspecialchars($auth->email) ?>" required>
                                     </div>
                                 </div>
-
-                                <!-- Other Details -->
-                                <div class="col-12">
-                                    <hr class="my-2 border-light">
-                                </div>
-
                                 <div class="col-12">
                                     <label
                                         class="form-label fw-bold text-secondary small text-uppercase">Username</label>
