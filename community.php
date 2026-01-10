@@ -42,7 +42,7 @@ include('navbar.php');
         <?php if (count($recipes) > 0): ?>
             <?php foreach ($recipes as $recipe): ?>
                 <div class="col-md-6 mb-4">
-                    <div class="card h-100 shadow-sm border-0" style="background:#CAC0BF">
+                    <div class="card h-100 shadow-sm border-0" style="background: #dadadaff">
                         <div class="card-body">
                             <h5 class="card-title text-black fw-bold"><?= htmlspecialchars($recipe->title) ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted">By <?= htmlspecialchars($recipe->author_name) ?> <small>on
