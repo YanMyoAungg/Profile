@@ -54,8 +54,8 @@ if (isset($_SESSION['user'])) {
                             <label for="emailInput">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" name="phone" class="form-control" id="phoneInput"
-                                placeholder="Phone Number" required>
+                            <input type="tel" name="phone" class="form-control" id="phoneInput"
+                                placeholder="Phone Number" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                             <label for="phoneInput">Phone Number</label>
                         </div>
                         <div class="form-floating mb-3">

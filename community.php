@@ -4,9 +4,12 @@ include("vendor/autoload.php");
 
 use Libs\Database\Mysql;
 use Libs\Database\CommunityRecipesTable;
+use Libs\Database\CommentsTable;
 
 $table = new CommunityRecipesTable(new Mysql());
 $recipes = $table->getAll();
+
+$commentsTable = new CommentsTable(new Mysql());
 
 include('header.php');
 include('navbar.php');
@@ -26,7 +29,11 @@ include('navbar.php');
 
     <?php if (isset($_GET['success'])): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            Recipe submitted successfully!
+            <?php if ($_GET['success'] == 'comment_added'): ?>
+                Comment added successfully!
+            <?php else: ?>
+                Recipe submitted successfully!
+            <?php endif; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
@@ -41,6 +48,7 @@ include('navbar.php');
     <div class="row">
         <?php if (count($recipes) > 0): ?>
             <?php foreach ($recipes as $recipe): ?>
+                <?php $comments = $commentsTable->getByRecipeId($recipe->id); ?>
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 shadow-sm border-0" style="background: #dadadaff">
                         <div class="card-body">
@@ -56,6 +64,44 @@ include('navbar.php');
 
                             <h6>Instructions:</h6>
                             <p class="small text-muted"><?= nl2br(htmlspecialchars($recipe->instructions)) ?></p>
+
+                            <hr>
+                            
+                            <button class="btn btn-sm btn-outline-dark mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#comments-<?= $recipe->id ?>" aria-expanded="false" aria-controls="comments-<?= $recipe->id ?>">
+                                <i class="bi bi-chat-left-text"></i> Comments (<?= count($comments) ?>)
+                            </button>
+                            
+                            <div class="collapse" id="comments-<?= $recipe->id ?>">
+                                <div class="card card-body bg-light">
+                                    <?php if (count($comments) > 0): ?>
+                                        <ul class="list-unstyled mb-3">
+                                            <?php foreach ($comments as $comment): ?>
+                                                <li class="mb-2">
+                                                    <strong><?= htmlspecialchars($comment->username) ?></strong>: 
+                                                    <?= htmlspecialchars($comment->comment) ?>
+                                                    <br>
+                                                    <small class="text-muted"><?= date('M d, Y H:i', strtotime($comment->created_at)) ?></small>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        <p class="small text-muted mb-3">No comments yet.</p>
+                                    <?php endif; ?>
+
+                                    <?php if (isset($_SESSION['user'])): ?>
+                                        <form action="actions/add_comment.php" method="POST">
+                                            <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
+                                            <div class="input-group input-group-sm">
+                                                <textarea class="form-control" name="comment" placeholder="Add a comment..." required rows="1"></textarea>
+                                                <button class="btn btn-dark" type="submit">Post</button>
+                                            </div>
+                                        </form>
+                                    <?php else: ?>
+                                        <p class="small text-muted"><a href="login.php">Login</a> to leave a comment.</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

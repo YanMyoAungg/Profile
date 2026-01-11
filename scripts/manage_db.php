@@ -119,6 +119,21 @@ function createSchema($pdo, $dbname)
         $created[] = 'community_recipes';
     }
 
+    // comments table
+    if (!tableExists($pdo, $dbname, 'comments')) {
+        $sql = "CREATE TABLE comments (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            recipe_id INT NOT NULL,
+            comment TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (recipe_id) REFERENCES community_recipes(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+        $pdo->exec($sql);
+        $created[] = 'comments';
+    }
+
     // contacts table
     if (!tableExists($pdo, $dbname, 'contacts')) {
         $sql = "CREATE TABLE contacts (

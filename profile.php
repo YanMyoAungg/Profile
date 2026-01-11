@@ -97,13 +97,11 @@ include('navbar.php');
                                             value="<?= htmlspecialchars($auth->username) ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label fw-bold text-secondary small text-uppercase">Phone</label>
-                                    <div class="input-group">
-                                        <input type="text" name="phone" class="form-control  ps-3"
-                                            value="<?= htmlspecialchars($auth->phone) ?>" required>
-                                    </div>
-                                </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-secondary small text-uppercase">Phone</label>
+                                <input type="tel" name="phone" class="form-control  ps-3"
+                                    value="<?= htmlspecialchars($auth->phone) ?>" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            </div>
                                 <div class="col-12">
                                     <label
                                         class="form-label fw-bold text-secondary small text-uppercase">Address</label>

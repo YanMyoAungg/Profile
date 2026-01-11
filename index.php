@@ -7,7 +7,18 @@ session_start();
 <!-- Hero Section -->
 <div id="heroSection"
     class="mb-4 bg-light hero-section text-center position-relative d-flex align-items-center justify-content-center"
-    style="min-height: 500px;">
+    style="min-height: 600px; background-image: url('./resources/kitchen.png'); background-size: cover; background-position: center;">
+    
+    <div class="container position-relative" style="z-index: 5;">
+        <div class="mb-4">
+            <img src="./actions/photos/logo_w3 1.png" alt="FoodFusion Logo" class="img-fluid mb-3" style="max-height: 120px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));" onerror="this.src='https://via.placeholder.com/150?text=FoodFusion'">
+        </div>
+        <div class="bg-white bg-opacity-75 p-4 rounded-3 shadow-sm d-inline-block" style="max-width: 600px;">
+            <h2 class="fw-bold text-dark mb-2">Welcome to FoodFusion</h2>
+            <p class="text-dark mb-0">Discover the art of cooking with our curated recipes, share your own culinary masterpieces, and join a community of food enthusiasts.</p>
+        </div>
+    </div>
+
     <?php if (!isset($_SESSION['user'])): ?>
 
         <div id="welcome_modal" class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center"
