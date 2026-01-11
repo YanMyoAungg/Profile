@@ -75,7 +75,7 @@ $users = $table->getAll();
 
                                 <?php if ($auth->role_id >= 2) : ?>
                                     <?php if ($user->suspended) : ?>
-                                        <a href="actions/unsuspend.php?id=<?= $user->id ?>" class="btn btn-warning btn-sm">Ban</a>
+                                        <a href="actions/unsuspend.php?id=<?= $user->id ?>" class="btn btn-warning btn-sm">Unban</a>
                                     <?php else : ?>
                                         <a href="actions/suspend.php?id=<?= $user->id ?>" class="btn btn-outline-warning btn-sm">Ban</a>
                                     <?php endif ?>

@@ -31,6 +31,13 @@ class UsersTable
         return false;
     }
 
+    public function findById($id)
+    {
+        $statement = $this->db->prepare("SELECT * FROM users WHERE id=:id");
+        $statement->execute(['id' => $id]);
+        return $statement->fetch();
+    }
+
     public function insert($data)
     {
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
